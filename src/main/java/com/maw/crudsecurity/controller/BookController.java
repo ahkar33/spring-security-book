@@ -60,4 +60,9 @@ public class BookController {
         return "redirect:/";
     }
 
+    @GetMapping("/403")
+    public String showError403() {
+        return "403";
+    }
+
 }

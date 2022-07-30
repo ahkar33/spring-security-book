@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
@@ -23,6 +24,14 @@
 
 <body>
 
+    <div sec:authorize="isAuthenticated()" class="text-center">
+        <h3>Welcome <span sec:authentication="name">This is for user name</span></h3>
+        &nbsp;
+        <span sec:authentication="principal.authorities">This is for role</span>
+        <form th:action="@{/logout}" method="post" class="m-2">
+            <input type="submit" value="Logout"/>
+        </form>
+    </div>
     <div class="d-flex justify-content-center align-items-center">
         <table>
             <thead>
@@ -30,7 +39,9 @@
                     <th>Book Name</th>
                     <th>Author</th>
                     <th>Price</th>
-                    <th>Action</th>
+                    <th sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">
+                        Action
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -38,11 +49,11 @@
                     <td th:text="${book.name}"></td>
                     <td th:text="${book.author}"></td>
                     <td th:text="${book.price}"></td>
-                    <td>
+                    <td sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">
                         <a class="btn btn-success mb-3" th:href="@{'/updateBook/' + ${book.id}}">
                             Update
                         </a>
-                        <a class="btn btn-danger mb-3" th:href="@{'/deleteBook/' + ${book.id}}">
+                        <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-danger mb-3" th:href="@{'/deleteBook/' + ${book.id}}">
                             Delete
                         </a>
                     </td>

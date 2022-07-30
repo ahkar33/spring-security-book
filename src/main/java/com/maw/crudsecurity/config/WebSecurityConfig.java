@@ -36,12 +36,16 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
         http
             .authorizeRequests()
+            .antMatchers("/deleteBook/**").hasAuthority("ADMIN")
+            .antMatchers("/updateBook/**").hasAnyAuthority("ADMIN", "EDITOR")
             .anyRequest().authenticated()
             .and()
             .formLogin().permitAll()
             .and()
-            .logout().permitAll();
-
+            .logout().permitAll()
+            .and()
+            .exceptionHandling().accessDeniedPage("/403")
+            ;
         return http.build();
     }
 
