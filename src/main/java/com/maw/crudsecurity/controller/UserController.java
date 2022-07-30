@@ -40,12 +40,12 @@ public class UserController {
         user.setPassword(encodedPassword);
         List<Role> roleList = roleService.findAllRoles(); 
         for(Role role : roleList) {
-            if(role.getName().equals("ADMIN")) {
+            if(role.getName().equals("USER")) {
                 user.addUserRoles(role);
             }
         }
         userService.addUser(user);
-        // model.addAttribute("msg", "successfully registered");
+        model.addAttribute("msg", "successfully registered");
         return "user-registration";
     }
 
