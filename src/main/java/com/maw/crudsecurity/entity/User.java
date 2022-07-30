@@ -1,6 +1,7 @@
 package com.maw.crudsecurity.entity;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -28,6 +29,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String email;
     private String name;
     private String password;
 
@@ -37,6 +39,12 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Role> userRoles;
+    private List<Role> userRoles;
+
+    public void addUserRoles(Role role) {
+        if(userRoles == null) 
+            userRoles = new ArrayList<>();
+        userRoles.add(role);
+    }
 
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
    
-    <form th:action="@{/addBook}" th:object="${book}" method="post">
+    <form th:action="@{/book/addBook}" th:object="${book}" method="post">
         <input type="text" th:field="*{name}" placeholder="Book Name">
         <input type="text" th:field="*{author}" placeholder="Book Author">
         <input type="text" th:field="*{price}" placeholder="Book Price">

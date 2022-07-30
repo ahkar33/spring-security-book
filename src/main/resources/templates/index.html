@@ -50,10 +50,10 @@
                     <td th:text="${book.author}"></td>
                     <td th:text="${book.price}"></td>
                     <td sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">
-                        <a class="btn btn-success mb-3" th:href="@{'/updateBook/' + ${book.id}}">
+                        <a class="btn btn-success mb-3" th:href="@{'/book/updateBook/' + ${book.id}}">
                             Update
                         </a>
-                        <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-danger mb-3" th:href="@{'/deleteBook/' + ${book.id}}">
+                        <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-danger mb-3" th:href="@{'/book/deleteBook/' + ${book.id}}">
                             Delete
                         </a>
                     </td>
@@ -62,7 +62,7 @@
         </table>
     </div>
     <div class="d-flex justify-content-center mt-2">
-        <a th:href="@{/addBook}" class="btn btn-lg btn-primary">
+        <a th:href="@{/book/addBook}" class="btn btn-lg btn-primary">
             Add
         </a>
     </div>

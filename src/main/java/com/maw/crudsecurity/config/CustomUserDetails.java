@@ -3,7 +3,6 @@ package com.maw.crudsecurity.config;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,7 +21,7 @@ public class CustomUserDetails implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Role> roles = user.getUserRoles();
+        List<Role> roles = user.getUserRoles();
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         for(Role role: roles) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
