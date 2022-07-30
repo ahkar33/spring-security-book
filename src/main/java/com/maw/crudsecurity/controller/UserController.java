@@ -1,7 +1,6 @@
 package com.maw.crudsecurity.controller;
 
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -38,12 +37,8 @@ public class UserController {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        List<Role> roleList = roleService.findAllRoles(); 
-        for(Role role : roleList) {
-            if(role.getName().equals("USER")) {
-                user.addUserRoles(role);
-            }
-        }
+        Role role = roleService.findRoleByRoleName("USER");
+        user.addUserRoles(role);
         userService.addUser(user);
         model.addAttribute("msg", "successfully registered");
         return "user-registration";

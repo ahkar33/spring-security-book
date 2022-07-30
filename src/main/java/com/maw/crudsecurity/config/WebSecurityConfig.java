@@ -43,7 +43,7 @@ public class WebSecurityConfig {
             .and()
             .formLogin()
             .loginPage("/login")
-            .usernameParameter("name")
+            .usernameParameter("email")
             .defaultSuccessUrl("/book/bookList")
             .permitAll()
             .and()
