@@ -56,6 +56,9 @@ public class WebSecurityConfig {
             .and()
             .logout().permitAll()
             .and()
+            .rememberMe()
+            // .tokenValiditySeconds(2592000) for remember me time limit
+            .and()
             .exceptionHandling().accessDeniedPage("/403")
             ;
         return http.build();
