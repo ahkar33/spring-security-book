@@ -36,7 +36,7 @@ public class CustomUserDetails implements UserDetails{
 
     @Override
     public String getUsername() {
-        return user.getName();
+        return user.getName(); // this is to show user name in thymeleaf, not for authentication
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CustomUserDetails implements UserDetails{
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return user.isEnabled();
     }
     
 }
