@@ -8,10 +8,13 @@
 </head>
 <body>
     <p>[[${msg}]]</p>
-    <form th:action="@{/user/registration}" method="post" th:object="${user}">
+    <form th:action="@{/registration}" method="post" th:object="${user}">
         <input type="email" th:field="*{email}" placeholder="email">
+        <br>
         <input type="text" th:field="*{name}" placeholder="username">
+        <br>
         <input type="password" th:field="*{password}" placeholder="password">
+        <br>
         <button type="submit">Register</button>
     </form>
     <a th:href="@{/login}">go to login page</a>

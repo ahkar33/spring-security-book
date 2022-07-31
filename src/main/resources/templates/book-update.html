@@ -10,9 +10,13 @@
    
     <form th:action="@{/book/updateBook}" th:object="${book}" method="post">
         <input type="hidden" th:field="*{id}">
+        <br>
         <input type="text" th:field="*{name}" placeholder="Book Name">
+        <br>
         <input type="text" th:field="*{author}" placeholder="Book Author">
+        <br>
         <input type="text" th:field="*{price}" placeholder="Book Price">
+        <br>
         <button type="submit">Update</button>
     </form>    
 

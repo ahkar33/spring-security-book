@@ -1,5 +1,6 @@
 package com.maw.crudsecurity.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -12,6 +13,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
+    @Autowired
+    private CustomLoginSuccessHandler customLoginSuccessHandler;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -36,7 +40,9 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
         http
             .authorizeRequests()
-            .antMatchers("/", "/user/**").permitAll()
+            .antMatchers("/","/registration/**").permitAll()
+            .antMatchers("/user/userPage/**").hasAnyAuthority("ADMIN", "USER")
+            .antMatchers("/user/adminPage/**").hasAnyAuthority("ADMIN")
             .antMatchers("/book/deleteBook/**").hasAuthority("ADMIN")
             .antMatchers("/book/updateBook/**").hasAnyAuthority("ADMIN", "EDITOR")
             .anyRequest().authenticated()
@@ -44,7 +50,8 @@ public class WebSecurityConfig {
             .formLogin()
             .loginPage("/login")
             .usernameParameter("email")
-            .defaultSuccessUrl("/book/bookList")
+            .successHandler(customLoginSuccessHandler)
+            // .defaultSuccessUrl("/book/bookList")
             .permitAll()
             .and()
             .logout().permitAll()
