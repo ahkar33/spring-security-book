@@ -22,13 +22,13 @@ public class BookController {
     @GetMapping("/bookList")
     public String testApi(ModelMap model) {
         model.addAttribute("bookList", bookService.findAllBooks());
-        return "index";
+        return "/book/index";
     }
 
     @GetMapping("/addBook")
     public String setupAddBook(ModelMap model) {
         model.addAttribute("book", new Book());
-        return "book-registration";
+        return "/book/book-registration";
     }
 
     @PostMapping("/addBook")
@@ -52,7 +52,7 @@ public class BookController {
         book.setAuthor(resBook.getAuthor());
         book.setPrice(resBook.getPrice());
         model.addAttribute("book", book);
-        return "book-update";
+        return "/book/book-update";
     }
 
     @PostMapping("/updateBook")
@@ -64,7 +64,7 @@ public class BookController {
 
     @GetMapping("/403")
     public String showError403() {
-        return "403";
+        return "/book/403";
     }
 
 }

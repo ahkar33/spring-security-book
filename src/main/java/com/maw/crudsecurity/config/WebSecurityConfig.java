@@ -40,7 +40,7 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
         http
             .authorizeRequests()
-            .antMatchers("/","/registration/**").permitAll()
+            .antMatchers("/*").permitAll()
             .antMatchers("/user/userPage/**").hasAnyAuthority("ADMIN", "USER")
             .antMatchers("/user/adminPage/**").hasAnyAuthority("ADMIN")
             .antMatchers("/book/deleteBook/**").hasAuthority("ADMIN")

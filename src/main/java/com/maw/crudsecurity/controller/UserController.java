@@ -10,17 +10,17 @@ public class UserController {
 
     @GetMapping("/adminPage")
     public String showAdminPage() {
-        return "admin-page";
+        return "/users-home/admin-page";
     }
 
     @GetMapping("/editorPage")
     public String showEditorPage() {
-        return "editor-page";
+        return "/users-home/editor-page";
     }
 
     @GetMapping("/userPage")
     public String showUserPage() {
-        return "user-page";
+        return "/users-home/user-page";
     }
 
 }
