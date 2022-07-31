@@ -41,6 +41,10 @@ public class AuthController {
 
     @PostMapping("/registration")
     public String registerUser(@ModelAttribute("user") User user, ModelMap model) {
+        if (userService.isNameExists(user.getName())) {
+            model.addAttribute("msg", "username already exists");
+            return "user-registration";
+        }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);

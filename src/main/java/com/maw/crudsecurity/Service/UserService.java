@@ -11,6 +11,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    public Boolean isNameExists(String name) {
+        return userRepository.existsByName(name);
+    }
+
     public User findUserByName(String name) {
         return userRepository.findByName(name);
     } 
