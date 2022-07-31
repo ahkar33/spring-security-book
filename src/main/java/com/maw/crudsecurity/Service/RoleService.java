@@ -1,4 +1,4 @@
-package com.maw.crudsecurity.Service;
+package com.maw.crudsecurity.service;
 
 import java.util.List;
 

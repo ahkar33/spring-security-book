@@ -5,8 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.maw.crudsecurity.Service.UserService;
 import com.maw.crudsecurity.entity.User;
+import com.maw.crudsecurity.service.UserService;
 
 public class CustomUserDetailsService implements UserDetailsService{
 

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.maw.crudsecurity.Service.UserService;
 import com.maw.crudsecurity.entity.User;
+import com.maw.crudsecurity.service.UserService;
 
 @Controller
 public class AuthController {

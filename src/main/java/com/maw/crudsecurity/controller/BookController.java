@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.maw.crudsecurity.Service.BookService;
 import com.maw.crudsecurity.entity.Book;
+import com.maw.crudsecurity.service.BookService;
 
 @Controller
 @RequestMapping("/book")

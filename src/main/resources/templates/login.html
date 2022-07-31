@@ -18,9 +18,9 @@
         <div th:if="${param.logout}" class="alert alert-sucess">
             You have been logged out.
         </div>
-        <input type="email" th:field="*{email}" placeholder="email">
+        <input type="email" th:field="*{email}" placeholder="email" required>
         <br/>
-        <input type="password" th:field="*{password}" placeholder="password">
+        <input type="password" th:field="*{password}" placeholder="password" required>
         <br/>
         <input type="checkbox" id="remember-me" name="remember-me">
         <label for="remember-me">remember me</label>
